@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Grids - Positioning</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (min-width: 700px) {
+        .wrapper {
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          justify-items: start;
+          align-items: end;
+          gap: 20px;
+          grid-auto-rows: minmax(150px, auto);
+        }
+
+        .nested {
+          display: grid;
+          grid-template-columns: 1fr 2fr 1fr;
+          grid-auto-rows: minmax(20px, auto);
+          gap: 5px;
+        }
+
+        .row {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 20px;
+        }
+
+        .wrapper-a {
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: 1fr 2fr 1fr;
+          grid-auto-rows: minmax(40px, auto);
+          gap: 5px;
+          justify-items: end;
+        }
+      }
+
+      .nested > div {
+        background: #aaa;
+        color: aqua;
+      }
+
+      .box {
+        background: #ddd;
+        border: 1px solid #000;
+      }
+
+      .box7 {
+        align-self: end;
+      }
+
+      .box7 > p {
+        margin: 0;
+      }
+
+      .box8 {
+        align-self: center;
+      }
+
+      h3 {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      p {
+        margin: 0 10px 10px;
+      }
+
+      .boxes-a {
+        background: #d9dfcd;
+        border: 1px solid rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box">
+        <h3>Box 1</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+          aspernatur esse odio cumque quisquam adipisci explicabo fuga itaque
+          excepturi repellendus, ab eligendi, distinctio harum velit magni porro
+          sint est dolorem maxime vero corrupti sit! Ducimus cumque, officiis
+          eius voluptatum voluptatibus ad qui quam? Nihil aliquid voluptatum est
+          soluta tenetur ducimus quo, eveniet natus cumque deserunt, recusandae
+        </p>
+      </div>
+      <div class="box">
+        <h3>Box 2</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+          aspernatur esse odio cumque quisquam adipisci explicabo fuga itaque
+          excepturi repellendus, ab eligendi, distinctio harum velit magni porro
+          sint est dolorem maxime vero corrupti sit! Ducimus cumque, officiis
+          eius voluptatum voluptatibus ad qui quam? Nihil aliquid voluptatum est
+        </p>
+      </div>
+      <div class="box">
+        <h3>Box 3</h3>
+        <div class="box nested">
+          <div><p>nested box 1</p></div>
+          <div><p>nested box 2</p></div>
+          <div><p>nested box 3</p></div>
+          <div><p>nested box 4</p></div>
+          <div><p>nested box 5</p></div>
+          <div><p>nested box 6</p></div>
+          <div class="box7">
+            <p>
+              This is nested box 7, which is larger/longer. Normally, this one
+              is aligned at the bottom of Box 3 (unless one of the other boxes
+              has more content, which will increase the height of the
+              auto-rows).
+            </p>
+
+            <p>
+              The paragraphs in this box, unlike all other paragraphs, have no
+              margin.
+            </p>
+          </div>
+          <div class="box8">
+            <p>Nested box 8, centered vertically.</p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <h3>Box 4</h3>
+        <p>
+          The .wrapper class is set to justify-items:start, which will resize
+          each div horizontally to fit its own content and push to the left.
+          Thus, Box 5 and Box 6 are smaller.
+        </p>
+        <p>
+          The .wrapper class is also set to align-items:end, which will resize
+          each div vertically to fit its content and push to the bottom. Thus,
+          Box 5 and 6 are at the bottom.
+        </p>
+      </div>
+      <div class="box"><h3>Box 5</h3></div>
+      <div class="box"><h3>Box 6</h3></div>
+    </div>
+    <div class="row"><p></p></div>
+    <div class="wrapper-a">
+      <div class="boxes-a">
+        <h3>Box A</h3>
+        <p>
+          Here, the .wrapper-a class is set to justify-items:end, which will
+          resize each div to fit its own contents, and also push them to the
+          right within each column. Columns are set to 1fr 2fr 1fr, so that Box
+          B is pushed to the right in the 2nd column.
+        </p>
+        <p>
+          <strong>Justify-items vs. Justify-content</strong><br />
+          <strong>justify-items:</strong> resizes grid areas each to itself,
+          smaller for less content;<br />
+          <strong>justify-content:</strong> resizes grid areas to the parent,
+          same size for all content.
+        </p>
+      </div>
+      <div class="boxes-a">
+        <h3>Box B</h3>
+        <p>Lorem ipsum.</p>
+      </div>
+      <div class="boxes-a">
+        <h3>Box C</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, facere.
+        </p>
+      </div>
+      <div class="boxes-a">
+        <h3>Box D</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+      </div>
+    </div>
+  </body>
+</html>
